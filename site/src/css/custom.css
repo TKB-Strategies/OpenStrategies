@@ -1,30 +1,485 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ============================================================
+   TKB Strategies — Open Consulting Company
+   Docusaurus Theme: "Cinematic Impact Report"
+   
+   Design direction: Editorial gravitas meets mission-driven warmth.
+   Inspired by high-end foundation annual reports, 
+   not SaaS documentation portals.
+   ============================================================ */
 
-/* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
+
+/* ---- Design Tokens ---- */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Primary — Dark Slate Blue */
+  --ifm-color-primary: #345168;
+  --ifm-color-primary-dark: #2e4860;
+  --ifm-color-primary-darker: #2a445a;
+  --ifm-color-primary-darkest: #1a2f40;
+  --ifm-color-primary-light: #3e5e76;
+  --ifm-color-primary-lighter: #4a6d86;
+  --ifm-color-primary-lightest: #5d849e;
+
+  /* Typography */
+  --ifm-font-family-base: 'Lato', Helvetica, Arial, sans-serif;
+  --ifm-heading-font-family: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --ifm-font-size-base: 17px;
+  --ifm-line-height-base: 1.8;
+  --ifm-heading-font-weight: 400;
+  --ifm-font-color-base: #4a4a4a;
+  --ifm-heading-color: #1a2f40;
+
+  /* Layout */
+  --ifm-global-spacing: 1.5rem;
+  --ifm-spacing-horizontal: 1.5rem;
+  --doc-sidebar-width: 260px;
+
+  /* Navbar */
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.97);
+  --ifm-navbar-shadow: none;
+  --ifm-navbar-height: 4.5rem;
+  --ifm-navbar-link-color: #345168;
+  --ifm-navbar-link-hover-color: #AD7600;
+
+  /* Footer */
+  --ifm-footer-background-color: #1a2530;
+  --ifm-footer-color: #c0c8ce;
+  --ifm-footer-link-color: #ffd088;
+  --ifm-footer-link-hover-color: #ffffff;
+  --ifm-footer-padding-vertical: 4rem;
+
+  /* Links */
+  --ifm-link-color: #7EBEC5;
+  --ifm-link-hover-color: #345168;
+  --ifm-link-hover-decoration: none;
+
+  /* Buttons */
+  --ifm-button-border-radius: 100px;
+  --ifm-button-font-weight: 700;
+
+  /* Code */
+  --ifm-code-font-size: 90%;
+  --ifm-code-border-radius: 4px;
+  --ifm-code-background: #f5f2ed;
+
+  /* Cards & Surfaces */
+  --ifm-card-background-color: #ffffff;
+  --ifm-global-radius: 2px;
+
+  /* TKB Brand Tokens */
+  --tkb-gold-light: #ffd088;
+  --tkb-amber: #ffb356;
+  --tkb-dark-gold: #AD7600;
+  --tkb-teal: #7EBEC5;
+  --tkb-slate: #345168;
+  --tkb-dark-slate: #1a2530;
+  --tkb-warm-bg: #faf8f5;
+  --tkb-cool-bg: #f0f2f5;
+  --tkb-text-secondary: #737a7a;
+  --tkb-rule-color: #e8e0d4;
+
+  /* Animations */
+  --tkb-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --tkb-ease-out: cubic-bezier(0, 0, 0.2, 1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* ---- Dark Mode ---- */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #ffd088;
+  --ifm-color-primary-dark: #ffbe6b;
+  --ifm-color-primary-darker: #ffb356;
+  --ifm-color-primary-darkest: #e89e30;
+  --ifm-color-primary-light: #ffdea5;
+  --ifm-color-primary-lighter: #ffe4b3;
+  --ifm-color-primary-lightest: #fff0d6;
+
+  --ifm-font-color-base: #d0d4d8;
+  --ifm-heading-color: #f0f2f5;
+  --ifm-background-color: #111a22;
+
+  --ifm-navbar-background-color: rgba(17, 26, 34, 0.97);
+  --ifm-navbar-link-color: #d0d4d8;
+
+  --ifm-link-color: #7EBEC5;
+  --ifm-link-hover-color: #ffd088;
+
+  --ifm-code-background: #1a2530;
+  --tkb-warm-bg: #141e28;
+  --tkb-cool-bg: #0f1720;
+  --tkb-rule-color: #2a3a48;
+  --tkb-text-secondary: #8a9199;
+}
+
+/* ============================================================
+   GLOBAL TYPOGRAPHY
+   ============================================================ */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.75rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+/* Editorial accent line under h2 in docs */
+.markdown h2 {
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--tkb-gold-light);
+  margin-top: 3rem;
+}
+
+.markdown h2:first-child {
+  margin-top: 0;
+}
+
+/* Refined paragraph styling */
+.markdown p {
+  max-width: 68ch;
+}
+
+/* Blockquotes — impact report callout style */
+.markdown blockquote {
+  border-left: 3px solid var(--tkb-amber);
+  background: var(--tkb-warm-bg);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  border-radius: 0 var(--ifm-global-radius) var(--ifm-global-radius) 0;
+  font-style: italic;
+  color: var(--tkb-text-secondary);
+}
+
+.markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   NAVBAR — Understated editorial header
+   ============================================================ */
+
+.navbar {
+  border-bottom: 1px solid var(--tkb-rule-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.navbar__title {
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--tkb-slate);
+}
+
+[data-theme='dark'] .navbar__title {
+  color: #f0f2f5;
+}
+
+.navbar__link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.3s var(--tkb-ease);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--tkb-dark-gold);
+}
+
+/* ============================================================
+   SIDEBAR — Clean, airy
+   ============================================================ */
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--tkb-rule-color) !important;
+}
+
+.menu__link {
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s var(--tkb-ease);
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background: transparent;
+  border-left: 2px solid var(--tkb-amber);
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+.menu__list-item-collapsible:hover {
+  background: transparent;
+}
+
+/* ============================================================
+   FOOTER — Dark, grounded
+   ============================================================ */
+
+.footer {
+  background: var(--ifm-footer-background-color);
+}
+
+.footer__title {
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.footer__link-item {
+  font-size: 0.875rem;
+  line-height: 2;
+  opacity: 0.75;
+  transition: opacity 0.2s var(--tkb-ease);
+}
+
+.footer__link-item:hover {
+  opacity: 1;
+  color: var(--tkb-gold-light);
+}
+
+.footer__copyright {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   DOCS — Editorial reading experience
+   ============================================================ */
+
+.docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module {
+  background: var(--tkb-warm-bg);
+}
+
+article {
+  max-width: 760px;
+}
+
+.theme-doc-markdown {
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+/* Admonitions — refined */
+.alert {
+  border-radius: var(--ifm-global-radius);
+  border-left-width: 3px;
+  box-shadow: none;
+}
+
+/* Table styling — impact report tables */
+.markdown table {
+  border: none;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.markdown table thead tr {
+  border-bottom: 2px solid var(--tkb-slate);
+}
+
+.markdown table thead th {
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tkb-text-secondary);
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+}
+
+.markdown table tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--tkb-rule-color);
+  font-size: 0.95rem;
+}
+
+.markdown table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================================
+   BLOG — Editorial long-form
+   ============================================================ */
+
+.blog-post-page article header h1 {
+  font-size: 3rem;
+  line-height: 1.15;
+  max-width: 20ch;
+}
+
+.blog-post-page article header .margin-vert--md {
+  color: var(--tkb-text-secondary);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   BUTTONS — Pill-shaped, brand-aligned
+   ============================================================ */
+
+.button--primary {
+  background: var(--tkb-slate);
+  color: #ffffff;
+  border: none;
+  font-family: var(--ifm-font-family-base);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  padding: 0.8rem 2.25rem;
+  transition: all 0.3s var(--tkb-ease);
+}
+
+.button--primary:hover {
+  background: var(--ifm-color-primary-darkest);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(26, 47, 64, 0.2);
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--tkb-slate);
+  border: 1.5px solid var(--tkb-slate);
+  font-family: var(--ifm-font-family-base);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 2.25rem;
+  transition: all 0.3s var(--tkb-ease);
+}
+
+.button--secondary:hover {
+  background: var(--tkb-slate);
+  color: #ffffff;
+  border-color: var(--tkb-slate);
+}
+
+/* ============================================================
+   PAGINATION — Clean
+   ============================================================ */
+
+.pagination-nav__link {
+  border-color: var(--tkb-rule-color);
+  border-radius: var(--ifm-global-radius);
+  transition: border-color 0.2s var(--tkb-ease);
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--tkb-amber);
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tkb-text-secondary);
+}
+
+.pagination-nav__label {
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   TOC — Right sidebar table of contents
+   ============================================================ */
+
+.table-of-contents__link {
+  font-size: 0.825rem;
+  color: var(--tkb-text-secondary);
+  transition: color 0.2s var(--tkb-ease);
+}
+
+.table-of-contents__link--active,
+.table-of-contents__link:hover {
+  color: var(--tkb-slate);
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS — Subtle reveal
+   ============================================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes goldLine {
+  from { width: 0; }
+  to { width: 80px; }
+}
+
+/* ============================================================
+   UTILITY CLASSES — For landing page components
+   ============================================================ */
+
+.tkb-label {
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--tkb-dark-gold);
+}
+
+.tkb-serif {
+  font-family: var(--ifm-heading-font-family);
+}
+
+.tkb-gold-rule {
+  width: 80px;
+  height: 2px;
+  background: var(--tkb-amber);
+  border: none;
+  margin: 1.5rem 0;
+}
+
+.tkb-gold-rule--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grain overlay for cinematic texture */
+.tkb-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }
