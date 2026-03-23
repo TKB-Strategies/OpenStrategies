@@ -40,6 +40,26 @@ TKB Strategies is a human-centered strategy consulting firm specializing in libe
 - Use `feature/*` branches for new work.
 - Do not commit directly to `main`. Changes should merge through pull requests.
 
+## Project Tracking
+
+This repository uses two living documents for progress tracking:
+
+- `docs/ROADMAP.md` - Phased project plan with task IDs (`P1.1`-`P9.5`), status indicators, dependencies, and ownership. This is the source of truth for what needs to happen and in what order.
+- `docs/OPERATIONS-JOURNAL.md` - Daily closeout log recording what was completed, decisions made, blockers, files changed, and next priorities. Every working session ends with an entry.
+
+When assisting with development, reference task IDs from the roadmap (for example, "This completes `P4.3`") and flag when work touches items in upcoming phases.
+
+## Docusaurus Public Site
+
+The `site/` directory contains a Docusaurus project deployed to GitHub Pages at `https://tkb-strategies.github.io`.
+
+- Build: `cd site && npm run build`
+- Local dev: `cd site && npm run start`
+- Deploy: automated via GitHub Actions on merge to `main` in `.github/workflows/deploy-docs.yml`
+- Content source: Markdown from `frameworks/`, `workshops/`, `presentations/`, and `docs/` is mapped into `site/docs/` for publication
+- The Docusaurus site is the public-facing layer of the open consulting model and publishes frameworks, tools, and methodology
+- The same client-data boundaries apply: nothing client-specific, no credentials, and no engagement details
+
 ## Consulting Frameworks Context
 
 - Compassionate Agility: a framework for navigating organizational change through empathy, clarity, and adaptive leadership.
