@@ -126,3 +126,69 @@ Copy this template for each session:
 
 - `9ae21df` Initial repository structure for TKB Strategies open consulting model
 - `2cba379` Remove failed Git bootstrap artifact
+
+## 2026-03-22 — Session 2
+
+| Field | Value |
+|---|---|
+| Phase | Phase 1 completion / Phase 2-3 preparation |
+| Focus | Project tracking infrastructure, Docusaurus planning, and Phase 2 preparation |
+| Branch | `main` |
+
+### Completed
+
+- `P1.18` — Restructured the Operations Journal with a standard daily closeout template
+- `P1.19` — Created the project roadmap, then expanded it to 9 phases and 82 tasks
+- Updated the root `CLAUDE.md` with project tracking and Docusaurus public-site context
+- `P2.10` — Created the GitHub Organization profile README at `.github/profile/README.md`
+- `P2.3` / `P3.1` preparation — Created `scripts/setup-remote.sh` and `scripts/setup-docusaurus.sh`
+- `P3.9` — Pre-created `site/CLAUDE.md` for Docusaurus-specific AI context
+- `P3.10` — Pre-created `site/README.md` for Docusaurus onboarding
+- `P3.8` — Updated `.gitignore` with Docusaurus exclusions ahead of the scaffold
+
+### Decisions Made
+
+| Decision | Rationale | Impact |
+|---|---|---|
+| Added Docusaurus as Phase 3 in the roadmap | GitHub Pages plus Docusaurus provides a free, Markdown-native publishing layer for the open consulting model so frameworks, methodology, and tools can publish directly from repo content | Original phases were renumbered from 3-8 to 4-9, 13 Docusaurus tasks were added, and the roadmap now totals 82 tasks |
+| Pre-created `site/CLAUDE.md` before the Docusaurus scaffold | AI context should be ready the moment the scaffold lands so Claude Code has full context from the first interaction with the `site/` directory | The `site/` directory now contains context files that the scaffold can layer onto |
+| Created setup scripts instead of relying on inline instructions | Scripts are repeatable, self-documenting, and can prompt the next manual actions | Phase 2 and Phase 3 kickoff each reduce to a single command with guided follow-through |
+
+### Blockers
+
+| Blocker | Resolution | Status |
+|---|---|---|
+| WSL on `/mnt/c` would not honor direct `chmod +x` changes for shell scripts | Use `git update-index --chmod=+x` when committing executable scripts on this filesystem | Closed |
+| Git commits from the coding sandbox fail because repository metadata lives outside the writable roots | Manual Git commit steps are now delegated to the terminal when needed | Closed |
+
+### Files Changed
+
+- `docs/OPERATIONS-JOURNAL.md`
+- `docs/ROADMAP.md`
+- `CLAUDE.md`
+- `.github/profile/README.md`
+- `scripts/setup-remote.sh`
+- `scripts/setup-docusaurus.sh`
+- `site/CLAUDE.md`
+- `site/README.md`
+- `.gitignore`
+
+### Next Session
+
+- `P2.1` — Create the GitHub Organization at `github.com`
+- `P2.2` — Create the empty repository under the organization
+- `P2.3` — Run `bash scripts/setup-remote.sh`
+- `P2.4` — Push `main` and verify upstream tracking
+- `P2.5` — Configure branch protection for `main`
+- `P2.9` — Enable GitHub Pages
+- `P3.1` — Run `bash scripts/setup-docusaurus.sh`
+
+### Commits
+
+- `69feedb` Add project roadmap and restructure operations journal for daily closeout tracking
+- `ea07605` Update CLAUDE.md with project tracking and Docusaurus context
+- `1680ab6` Add GitHub Organization profile README for public-facing org page
+- `983d750` Add setup scripts for GitHub remote (Phase 2) and Docusaurus scaffold (Phase 3)
+- Pending manual commit: `Add Docusaurus AI context and README ahead of Phase 3 scaffold`
+- Pending manual commit: `Update .gitignore with Docusaurus exclusions (P3.8)`
+- Pending manual commit: `Daily closeout — Session 2: tracking infrastructure, Docusaurus planning, Phase 2 prep`
