@@ -1,0 +1,5 @@
+{
+  "permissions": {
+    "notes": "Configure allowed and denied tool patterns here. See Claude Code docs for managed permissions schema."
+  }
+}

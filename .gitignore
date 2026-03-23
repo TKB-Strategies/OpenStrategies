@@ -1,0 +1,36 @@
+# Environment and WordPress secrets
+.env
+.env.*
+!.env.example
+wp-config.php
+
+# Client and private data boundaries
+client-*
+**/client-*
+private/
+**/private/
+data/
+**/data/
+exports/
+**/exports/
+
+# Dependencies and build artifacts
+node_modules/
+vendor/
+
+# Database dumps and backups
+*.sql
+*.bak
+*~
+
+# Logs and FTP config
+*.log
+.ftpconfig
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/*
+!.vscode/.gitkeep

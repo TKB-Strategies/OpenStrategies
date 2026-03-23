@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "notes": "Add MCP server configurations here as integrations are established. Potential integrations: GitHub (issues/PRs), Google Workspace (docs reference), error logging."
+  }
+}
