@@ -1,0 +1,175 @@
+---
+slug: day-one
+title: "Day 1: From Empty Folder to Live Site"
+authors: [tekoah]
+tags: [building-in-public, open-source]
+description: "The entire TKB Strategies open consulting company went from an empty folder to a live editorial site in a single day. Here's the full journey."
+---
+
+import Mermaid from '@theme/Mermaid';
+
+The entire TKB Strategies open consulting company went from an empty folder to a live editorial site in a single day. Three working sessions. Forty-six percent of an 82-task roadmap completed. A repository initialized, a GitHub Organization created, a premium editorial site designed and deployed, all in the open.
+
+This is what we built and how we built it.
+
+<!-- truncate -->
+
+## The Day in Numbers
+
+<Mermaid value={`
+pie title Project Completion — End of Day 1
+    "Phase 1 · Local Foundation (19)" : 19
+    "Phase 2 · GitHub Org (9)" : 9
+    "Phase 3 · Docusaurus Site (10)" : 10
+    "Remaining (44)" : 44
+`} />
+
+| Metric | Value |
+|--------|-------|
+| Phases complete or substantially complete | 3 of 9 |
+| Tasks completed | 38 of 82 |
+| Overall progress | 46% |
+| PRs merged | 4 |
+| Working sessions | 3 |
+| Site live at | [tkb-strategies.github.io/OpenStrategies](https://tkb-strategies.github.io/OpenStrategies/) |
+
+---
+
+## Session 1 — Foundation
+
+**Phase 1: Local Repository Foundation** — *Complete (19/19)*
+
+Started with an empty folder in WSL. By the end of this session, the repository had a full directory structure for plugins, themes, frameworks, workshops, presentations, products, and documentation. Every directory received a `CLAUDE.md` file providing AI context so that Claude Code could assist effectively from the first interaction. Governance documents established the hard boundaries: what goes in the repo (open methodology), what never does (client data, credentials, engagement details). The `.gitignore`, `SECURITY.md`, and `CONTRIBUTING.md` encode those boundaries into the tooling itself.
+
+**Key artifacts:**
+
+- Root `CLAUDE.md` with architecture, code standards, deployment notes, and confidentiality boundaries
+- `docs/ROADMAP.md` — 9-phase, 82-task project plan
+- `docs/OPERATIONS-JOURNAL.md` — daily closeout log with structured template
+- `docs/STACK.md` — full technology stack documentation
+- `.gitignore` excluding secrets, client-prefixed files, database dumps, and build artifacts
+
+---
+
+## Session 2 — Planning and Preparation
+
+**Roadmap and tracking infrastructure established.**
+
+The project plan grew from an initial sketch into a fully phased roadmap. Docusaurus was added as Phase 3 when we decided the GitHub Organization should have a public-facing documentation site, not just a code repository. Setup scripts were created for both the GitHub remote connection and the Docusaurus scaffold so that Phase 2 and Phase 3 kickoff would each be a single command.
+
+**Key decisions:**
+
+- Daily closeout format standardized with task IDs, decisions table, blockers, files changed, and next-session priorities
+- `.github/profile/README.md` authored pre-org-creation so it would deploy on first push
+- Adopted `feature/*` branching model with `main` as always-deployable production
+
+---
+
+## Session 3 — Build and Ship
+
+**Phase 2: GitHub Organization** — *90% complete (9/10)*
+
+Created the `TKB-Strategies` GitHub Organization with the `OpenStrategies` repository. Connected the local repo, pushed `main`, configured branch protection (require PR before merge), stored FTP credentials as GitHub Secrets for future WordPress deployment, and enabled GitHub Pages with source set to GitHub Actions.
+
+**Phase 3: Docusaurus Public Site** — *77% complete (10/13)*
+
+This is where the day got interesting.
+
+The Docusaurus scaffold initially failed on the NTFS-mounted Windows filesystem. WSL could not complete the file permission operations. Rather than work around it, we made an operational decision to migrate the entire working tree to the WSL-native Linux filesystem. This eliminated the permission issues permanently and improved Git and npm performance.
+
+With the scaffold in place, we replaced every default component with a custom editorial design:
+
+- **Typography:** DM Serif Display for headlines and Lato for body, creating the contrast of a high-end impact report
+- **Color palette:** Extracted directly from the production site CSS, built around dark slate blue (`#345168`), gold (`#ffd088`), amber (`#ffb356`), warm parchment backgrounds, and cool gray accents
+- **Landing page:** Full-viewport cinematic hero, impact-report stat strip, editorial framework cards, dark philosophy quote section with film-grain texture, tools preview, and warm closing CTA with scroll-triggered reveal animations
+- **Documentation styling:** Gold-underlined h2 headings, amber sidebar active indicators, impact-report tables, and editorial blockquotes
+- **No stock images:** The design carries on typography, gradients, SVG dividers, and spatial composition alone
+
+A GitHub Actions workflow deploys the site automatically on every merge to `main`.
+
+---
+
+## Architecture
+
+<Mermaid value={`
+flowchart TB
+    subgraph LOCAL["Local Development"]
+        WSL["WSL Ubuntu"]
+        VSCODE["VS Code · WSL Mode"]
+        AI["Claude Code + Codex"]
+    end
+    subgraph GITHUB["GitHub · TKB-Strategies"]
+        REPO["OpenStrategies Repo"]
+        ACTIONS["GitHub Actions"]
+        PAGES["GitHub Pages"]
+    end
+    subgraph PROD["Production · Namecheap"]
+        WP["WordPress / Divi"]
+        MYSQL["MySQL"]
+    end
+    WSL -->|git push| REPO
+    VSCODE --> WSL
+    AI --> VSCODE
+    REPO -->|merge to main| ACTIONS
+    ACTIONS -->|build + deploy| PAGES
+    PAGES -->|serves| DOCS["tkb-strategies.github.io/OpenStrategies"]
+    REPO -.->|future: FTP deploy| WP
+    WP --> MYSQL
+`} />
+
+---
+
+## Decisions That Shaped the Day
+
+| Decision | Why | What It Changed |
+|----------|-----|-----------------|
+| Migrate working tree to WSL-native filesystem | NTFS mount caused `EPERM` errors during Docusaurus scaffold | Eliminated all permission issues and improved Git and npm operations |
+| Git metadata in Linux filesystem with pointer file | WSL cannot do reliable chmod operations on NTFS | Reliable Git operations with a `.git` pointer at repo root |
+| `CLAUDE.md` at every directory level | Claude Code reads the nearest context file | AI-assisted development has correct architecture and boundary context from first interaction |
+| Scope repo to custom work only, not full WordPress | Core WordPress files remain managed by hosting | Clean repo boundaries and deployment aimed at specific `wp-content/` paths |
+| Docusaurus on GitHub Pages | Free, markdown-native, and builds from existing repo content | Frameworks publish automatically on merge to `main` |
+| DM Serif Display + Lato typography | Editorial contrast and Lato matches the production site | The Docusaurus site reads like the publication arm of TKB Strategies |
+| CSS-only visual design with no images | Fast loads, no licensing overhead, and GitHub Pages simplicity | Premium feel from typography, gradients, and spatial composition alone |
+| `.gitattributes` with LF enforcement | Line-ending drift was detected after WSL migration | Prevents CRLF/LF issues for future cross-platform work |
+
+---
+
+## Where We Stand
+
+<Mermaid value={`
+flowchart LR
+    P1["✅ Phase 1\nLocal Foundation\n19/19"]
+    P2["🟡 Phase 2\nGitHub Org\n9/10"]
+    P3["🟡 Phase 3\nDocusaurus\n10/13"]
+    P4["⬜ Phase 4\nWP Staging\n0/9"]
+    P5["⬜ Phase 5\nCI/CD\n0/9"]
+    P6["⬜ Phase 6\nPlugin Dev\n0/5"]
+    P7["⬜ Phase 7\nFrameworks\n0/7"]
+    P8["⬜ Phase 8\nProducts\n0/6"]
+    P9["⬜ Phase 9\nMCP\n0/4"]
+    P1 --> P2
+    P2 --> P3
+    P2 --> P4
+    P2 --> P9
+    P3 --> P7
+    P4 --> P5
+    P5 --> P6
+    P6 --> P7
+    P7 --> P8
+`} />
+
+Three parallel tracks are now unblocked:
+
+- **Framework content (Phase 7)** — Start publishing Compassionate Agility, Liberation Mapping, and the Steward's Manual
+- **WordPress staging (Phase 4)** — Stand up `dev.tkbstrategies.com` for plugin development
+- **MCP integrations (Phase 9)** — Connect Claude Code to GitHub, Google Workspace, and external services
+
+---
+
+## What Comes Next
+
+The foundation supports everything ahead: real framework content populating the site, the quiz plugin pulled into version control, a staging environment for WordPress development, CI/CD pipelines for automated deployment, and eventually digital products on Gumroad and Udemy with source material managed right here in this repo.
+
+The open consulting model is now publicly visible. The methodology, the tools, and the entire approach to building a consulting company are all version-controlled and available.
+
+The methodology doesn't have to stay locked behind proposals. Today we proved that.
