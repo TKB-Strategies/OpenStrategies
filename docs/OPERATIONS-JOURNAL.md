@@ -192,3 +192,30 @@ Copy this template for each session:
 - Pending manual commit: `Add Docusaurus AI context and README ahead of Phase 3 scaffold`
 - Pending manual commit: `Update .gitignore with Docusaurus exclusions (P3.8)`
 - Pending manual commit: `Daily closeout — Session 2: tracking infrastructure, Docusaurus planning, Phase 2 prep`
+
+## 2026-03-22 — Session 3
+
+| Field | Value |
+|---|---|
+| Phase | Phase 2 (Complete) / Phase 3 (Substantially Complete) |
+| Focus | GitHub org setup, WSL migration, Docusaurus editorial design, first deploy, README redesign, Day 1 progress post |
+| Branch | `main`, `feature/*` |
+
+### Completed
+
+- `P2.1-P2.6` — Completed GitHub org setup, repo creation, remote connection, push, branch protection, and repository settings
+- `P2.8-P2.10` — Added repository defaults, enabled GitHub Pages, and published the org profile surface
+- `P3.1-P3.5` — Scaffolded Docusaurus, configured branding, and established the initial docs information architecture
+- `P3.7-P3.11` — Built the landing page and navigation, deployed the docs workflow, and published the first GitHub Pages site
+- Added `.gitattributes` LF enforcement after the WSL migration
+- Migrated the working tree to the WSL-native Linux filesystem to resolve NTFS permission failures
+- Redesigned `README.md` for a more structured public-facing repository presentation
+- Installed the Mermaid theme for Docusaurus and added the Day 1 progress post with visual diagrams
+
+### Next Session
+
+- `P2.7` — Verify org profile README rendering
+- `P3.6` — Update `site/CLAUDE.md`
+- `P3.12` — Add Docusaurus to `STACK.md`
+- `P3.13` — Evaluate a custom docs domain
+- Choose the next execution track: Phase 4 WordPress staging or Phase 7 framework publishing
