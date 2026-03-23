@@ -34,3 +34,8 @@ Thumbs.db
 # IDE settings
 .vscode/*
 !.vscode/.gitkeep
+
+# Docusaurus
+site/node_modules/
+site/.docusaurus/
+site/build/
