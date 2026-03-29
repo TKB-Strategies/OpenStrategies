@@ -282,6 +282,7 @@ Operational update on 2026-03-29:
 - `apps/client-portal/` normalized to npm with a committed `package-lock.json` so the root workflow can run deterministically
 - `services/api/` and `services/auth/` now have initial contract documentation
 - `docs/SERVICES-ARCHITECTURE.md` defines the first service-layer boundaries for the SaaS transition
+- `services/api/tenants.md`, `services/api/assessments.md`, and `services/api/exports.md` now define the first concrete API contract surfaces
 
 ## First File-Move Pass
 

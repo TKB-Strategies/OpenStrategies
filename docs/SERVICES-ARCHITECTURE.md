@@ -86,3 +86,9 @@ The next safe backend move after these service docs is to define a minimal reque
 - export request submission
 
 Those should be added only after the service boundaries here are accepted.
+
+Initial contract documents now exist at:
+
+- [services/api/tenants.md](../services/api/tenants.md)
+- [services/api/assessments.md](../services/api/assessments.md)
+- [services/api/exports.md](../services/api/exports.md)

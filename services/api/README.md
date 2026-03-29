@@ -43,3 +43,9 @@ The first implementation should start with:
 4. export request interfaces that can initially be no-op or local-only
 
 The service should consume shared package logic wherever possible rather than duplicating business rules from `packages/`.
+
+## Initial Contract Documents
+
+- [Tenant Config Contract](tenants.md)
+- [Assessment Definition Contract](assessments.md)
+- [Export Request Contract](exports.md)
