@@ -245,6 +245,8 @@ Status on 2026-03-29:
 
 - `packages/tenant-config/` created as the first shared package
 - `apps/client-portal/` now consumes shared tenant validation, accent CSS generation, and sidebar-building helpers from `packages/tenant-config/`
+- `packages/workflow-engine/` created for client portal navigation and engagement flow helpers
+- `apps/client-portal/` now consumes shared workflow/sidebar logic from `packages/workflow-engine/`
 - `packages/assessment-core/` created for healing-plan assessment structure
 - `packages/exports/` created for healing-plan text export generation
 - `apps/healing-plan/` now consumes shared assessment and export modules instead of keeping that logic entirely inside `src/App.jsx`

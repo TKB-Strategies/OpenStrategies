@@ -57,4 +57,6 @@ yarn serve
 
 Shared tenant metadata logic now begins in `packages/tenant-config/`, while `client.json` remains the app-local tenant instance consumed by this app.
 
+Shared engagement navigation logic now begins in `packages/workflow-engine/`, rather than living directly in the app sidebar file.
+
 The original deployment workflow file is preserved under `apps/client-portal/.github/workflows/deploy.yml` as a migration reference. Nested workflow files are not active in GitHub Actions from within this monorepo; promoting this deploy path into a root-level workflow is a later migration step.
