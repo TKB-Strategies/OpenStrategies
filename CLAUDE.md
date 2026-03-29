@@ -8,6 +8,8 @@ TKB Strategies is a human-centered strategy consulting firm specializing in libe
 
 - `legacy/wordpress-plugin-quiz-tracker/` - Transitional WordPress plugin surface for the public quiz experience. This is a legacy bridge, not the future platform center.
 - `legacy/wordpress-theme-tkb-child/` - Transitional child theme surface for Divi/Jupiter customizations. This is a legacy bridge, not the future platform center.
+- `services/api/` - Contract-first API lane for tenant, workflow, assessment, and export operations.
+- `services/auth/` - Contract-first auth lane for identity, membership, and tenant boundary enforcement.
 - `frameworks/` - Original consulting frameworks intended for public consumption as Markdown-based documentation.
 - `workshops/` and `presentations/` - Template structures for facilitation and speaking engagements. These directories must never contain client-specific content.
 - `products/` - Digital product source files for Gumroad and course platforms.

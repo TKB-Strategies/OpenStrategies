@@ -280,6 +280,8 @@ Operational update on 2026-03-29:
 - root-level monorepo workflows added for `apps/client-portal/` and `apps/healing-plan/`
 - imported nested workflow files remain in each app directory as historical references
 - `apps/client-portal/` normalized to npm with a committed `package-lock.json` so the root workflow can run deterministically
+- `services/api/` and `services/auth/` now have initial contract documentation
+- `docs/SERVICES-ARCHITECTURE.md` defines the first service-layer boundaries for the SaaS transition
 
 ## First File-Move Pass
 

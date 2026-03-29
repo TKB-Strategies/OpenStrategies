@@ -43,6 +43,7 @@ Client-specific data, engagement details, financials, or confidential organizati
 - [Documentation Site](https://tkb-strategies.github.io/OpenStrategies/)
 - [Project Roadmap](docs/ROADMAP.md)
 - [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md)
+- [Services Architecture](docs/SERVICES-ARCHITECTURE.md)
 - [Technology Stack](docs/STACK.md)
 - [Contributing](docs/CONTRIBUTING.md)
 - [Security Policy](docs/SECURITY.md)
@@ -118,6 +119,11 @@ OpenStrategies/
 │   ├── compassionate-agility/  # Compassionate Agility framework source
 │   ├── liberation-mapping/     # Liberation Mapping framework source
 │   └── stewards-manual/        # Steward's Manual framework source
+├── services/
+│   ├── api/                    # Tenant-aware API service contracts
+│   ├── auth/                   # Identity and tenant-boundary contracts
+│   ├── jobs/                   # Reserved for background processing
+│   └── webhooks/               # Reserved for event integrations
 ├── presentations/
 │   └── templates/              # Conference & speaking engagement templates
 ├── products/
@@ -141,7 +147,7 @@ OpenStrategies/
 
 This project is being built in the open. Progress is tracked across a [9-phase roadmap](docs/ROADMAP.md) with 82 tasks, and every working session is logged in the [operations journal](docs/OPERATIONS-JOURNAL.md).
 
-The repository has begun its first structural migration steps toward a monorepo layout. The public docs app now lives under `apps/docs-site/`, and the external `client-template` and `healing-plan` projects have been imported into `apps/` for the next extraction phase. Future application, package, service, and legacy lanes are documented in the [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md).
+The repository has begun its first structural migration steps toward a monorepo layout. The public docs app now lives under `apps/docs-site/`, the private and product apps have been imported into `apps/`, shared logic is being extracted into `packages/`, and the first service-layer contracts now live under `services/`. Future application, package, service, and legacy lanes are documented in the [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md).
 
 Follow along on the [Building in Public journal](https://tkb-strategies.github.io/OpenStrategies/blog) or watch the commit history.
 
