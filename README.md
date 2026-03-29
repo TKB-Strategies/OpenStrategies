@@ -43,6 +43,7 @@ Client-specific data, engagement details, financials, or confidential organizati
 - [Documentation Site](https://tkb-strategies.github.io/OpenStrategies/)
 - [Project Roadmap](docs/ROADMAP.md)
 - [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md)
+- [Architecture Records](docs/architecture/README.md)
 - [Services Architecture](docs/SERVICES-ARCHITECTURE.md)
 - [Technology Stack](docs/STACK.md)
 - [Contributing](docs/CONTRIBUTING.md)
@@ -149,7 +150,7 @@ This project is being built in the open. Progress is tracked across a [9-phase r
 
 The repository has now completed its first structural migration into a working monorepo layout. The public docs app lives under `apps/docs-site/`, the private and product apps live under `apps/`, shared logic has begun moving into `packages/`, legacy WordPress surfaces are isolated under `legacy/`, and the first service-layer contracts now live under `services/`. All three current app lanes build from their monorepo locations. Future application, package, service, and legacy lanes are documented in the [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md).
 
-Follow along on the [Building in Public journal](https://tkb-strategies.github.io/OpenStrategies/blog) or watch the commit history.
+Follow along on the [Building in Public journal](https://tkb-strategies.github.io/OpenStrategies/blog), read the milestone journal entries in [docs/journal](docs/journal/README.md), or watch the commit history.
 
 ---
 

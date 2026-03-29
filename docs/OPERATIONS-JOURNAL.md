@@ -2,6 +2,13 @@
 
 This document is the daily closeout log for the `tkb-strategies` repository. Every working session ends with an entry so the repository keeps a durable record of progress, decisions, blockers, and next steps.
 
+For milestone-day narrative summaries, use the journal entries in [`docs/journal/`](journal/README.md).
+
+Recent narrative entries:
+
+- [2026-03-22](journal/2026-03-22.md) — Day 1 foundation, GitHub activation, and first live public site
+- [2026-03-29](journal/2026-03-29.md) — Day 2 monorepo migration, shared package extraction, and service-boundary definition
+
 ## Daily Closeout Template
 
 Copy this template for each session:
