@@ -46,7 +46,7 @@ See [ONBOARDING.md](ONBOARDING.md) for environment setup and [docs/adr/001-stati
 
 ## Migration Note
 
-This app now lives inside the `tkb-strategies` monorepo at `apps/healing-plan/`. Its original deployment workflow is preserved under `apps/healing-plan/.github/workflows/deploy.yml` as a migration reference. Nested workflow files are not active in GitHub Actions from within this monorepo; promoting this deploy path into a root-level workflow is a later migration step.
+This app now lives inside the `tkb-strategies` monorepo at `apps/healing-plan/`. Its original deployment workflow is preserved under `apps/healing-plan/.github/workflows/deploy.yml` as a historical reference. Active monorepo deployment now lives at `.github/workflows/deploy-healing-plan.yml`.
 
 Its assessment structure and text export assembly are now being extracted into shared packages under `packages/assessment-core/` and `packages/exports/`.
 

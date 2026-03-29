@@ -275,6 +275,11 @@ Goal: begin the real SaaS backend without destabilizing delivery.
 - Add `services/jobs/` for asynchronous exports, notifications, and workflow tasks.
 - Keep existing static deploys until those services are ready to replace them.
 
+Operational update on 2026-03-29:
+
+- root-level monorepo workflows added for `apps/client-portal/` and `apps/healing-plan/`
+- imported nested workflow files remain in each app directory as historical references
+
 ## First File-Move Pass
 
 This is the recommended first pass before any deep refactor:

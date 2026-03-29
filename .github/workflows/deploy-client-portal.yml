@@ -1,0 +1,41 @@
+name: Deploy Client Portal
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/client-portal/**'
+      - '.github/workflows/deploy-client-portal.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: apps/client-portal/package-lock.json
+
+      - name: Install dependencies
+        working-directory: apps/client-portal
+        run: npm ci
+
+      - name: Build
+        working-directory: apps/client-portal
+        run: npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./apps/client-portal/build/
+          server-dir: ${{ secrets.FTP_PATH }}
