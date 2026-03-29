@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - mkdir -p /home/mvisdrda/apps/healing-plan/tmp && touch /home/mvisdrda/apps/healing-plan/tmp/restart.txt
