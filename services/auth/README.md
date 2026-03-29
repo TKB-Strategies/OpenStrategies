@@ -43,3 +43,9 @@ The first implementation should define:
 2. role vocabulary
 3. request context shape for downstream services
 4. session/token verification contract for the API layer
+
+## Initial Contract Documents
+
+- [Tenant Membership Contract](membership.md)
+- [Role Vocabulary Contract](roles.md)
+- [Request Context Contract](request-context.md)

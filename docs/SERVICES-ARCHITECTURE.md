@@ -92,3 +92,9 @@ Initial contract documents now exist at:
 - [services/api/tenants.md](../services/api/tenants.md)
 - [services/api/assessments.md](../services/api/assessments.md)
 - [services/api/exports.md](../services/api/exports.md)
+
+Matching auth contract documents now exist at:
+
+- [services/auth/membership.md](../services/auth/membership.md)
+- [services/auth/roles.md](../services/auth/roles.md)
+- [services/auth/request-context.md](../services/auth/request-context.md)
