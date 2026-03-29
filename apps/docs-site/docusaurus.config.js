@@ -36,7 +36,7 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl:
-            'https://github.com/TKB-Strategies/OpenStrategies/tree/main/site/',
+            'https://github.com/TKB-Strategies/OpenStrategies/tree/main/apps/docs-site/',
         },
         blog: {
           showReadingTime: true,
@@ -46,7 +46,7 @@ const config = {
           blogSidebarTitle: 'Recent entries',
           blogSidebarCount: 8,
           editUrl:
-            'https://github.com/TKB-Strategies/OpenStrategies/tree/main/site/',
+            'https://github.com/TKB-Strategies/OpenStrategies/tree/main/apps/docs-site/',
         },
         theme: {
           customCss: './src/css/custom.css',

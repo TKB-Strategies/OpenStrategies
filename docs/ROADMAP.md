@@ -59,7 +59,7 @@ Goal: create the public GitHub surface and connect the local repository to its r
 |---|---|---|---|---|
 | P2.1 | Create the GitHub Organization | NEXT | P1.19 | Repo maintainer |
 | P2.2 | Create the empty `tkb-strategies` repository under the organization | NEXT | P2.1 | Repo maintainer |
-| P2.3 | Configure `origin` using `scripts/setup-remote.sh` | NEXT | P2.2 | Repo maintainer |
+| P2.3 | Configure `origin` using `tooling/scripts/setup-remote.sh` | NEXT | P2.2 | Repo maintainer |
 | P2.4 | Push `main` to GitHub and verify upstream tracking | NEXT | P2.3 | Repo maintainer |
 | P2.5 | Configure branch protection for `main` | NEXT | P2.4 | Repo maintainer |
 | P2.6 | Add repository description, topics, and visibility settings | PLANNED | P2.4 | Repo maintainer |
@@ -74,16 +74,16 @@ Goal: add a markdown-native public documentation site for frameworks, tools, and
 
 | ID | Task | Status | Depends On | Owner |
 |---|---|---|---|---|
-| P3.1 | Scaffold Docusaurus into `site/` | NEXT | P2.4 | Repo maintainer |
+| P3.1 | Scaffold Docusaurus into `apps/docs-site/` | NEXT | P2.4 | Repo maintainer |
 | P3.2 | Configure `docusaurus.config.js` for TKB Strategies branding and GitHub Pages | PLANNED | P3.1 | Repo maintainer |
 | P3.3 | Create the initial docs information architecture | PLANNED | P3.1 | Repo maintainer |
-| P3.4 | Map framework markdown into `site/docs/frameworks/` | PLANNED | P3.3 | Repo maintainer |
-| P3.5 | Map workshop and presentation templates into `site/docs/` | PLANNED | P3.3 | Repo maintainer |
+| P3.4 | Map framework markdown into `apps/docs-site/docs/frameworks/` | PLANNED | P3.3 | Repo maintainer |
+| P3.5 | Map workshop and presentation templates into `apps/docs-site/docs/` | PLANNED | P3.3 | Repo maintainer |
 | P3.6 | Add plugin and tools documentation pages | PLANNED | P3.3 | Repo maintainer |
 | P3.7 | Create the landing page and navigation structure | PLANNED | P3.2 | Repo maintainer |
 | P3.8 | Update `.gitignore` with Docusaurus exclusions | COMPLETE | P1.13 | Repo maintainer |
-| P3.9 | Add `site/CLAUDE.md` for Docusaurus-specific AI context | COMPLETE | P1.19 | Repo maintainer |
-| P3.10 | Add `site/README.md` for local onboarding | COMPLETE | P1.19 | Repo maintainer |
+| P3.9 | Add `apps/docs-site/CLAUDE.md` for Docusaurus-specific AI context | COMPLETE | P1.19 | Repo maintainer |
+| P3.10 | Add `apps/docs-site/README.md` for local onboarding | COMPLETE | P1.19 | Repo maintainer |
 | P3.11 | Create `.github/workflows/deploy-docs.yml` for GitHub Pages deployment | PLANNED | P2.9, P3.1 | Repo maintainer |
 | P3.12 | Test local Docusaurus build and production output | PLANNED | P3.2 | Repo maintainer |
 | P3.13 | Publish the initial GitHub Pages site | PLANNED | P3.11, P3.12 | Repo maintainer |

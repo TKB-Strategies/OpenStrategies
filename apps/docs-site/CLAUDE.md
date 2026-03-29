@@ -7,7 +7,7 @@ This directory contains the Docusaurus project that powers the TKB Strategies pu
 ## Build Commands
 
 - `npm run start` - Local development server with hot reload (port 3000)
-- `npm run build` - Production build to `site/build/`
+- `npm run build` - Production build to `apps/docs-site/build/`
 - `npm run serve` - Serve production build locally for testing
 
 ## Content Mapping
@@ -21,11 +21,11 @@ Source markdown from the repository root is mapped into this site's docs structu
 | `frameworks/stewards-manual/` | `docs/frameworks/stewards-manual/` | Framework methodology |
 | `workshops/templates/` | `docs/workshops/` | Facilitation templates |
 | `presentations/templates/` | `docs/presentations/` | Deck outlines |
-| `plugins/tkb-quiz-tracker-v2/` | `docs/tools/quiz/` | Plugin documentation |
+| `legacy/wordpress-plugin-quiz-tracker/` | `docs/tools/quiz/` | Legacy plugin documentation |
 
 ## Deployment
 
-Deployed via GitHub Actions (`.github/workflows/deploy-docs.yml`) on merge to `main`. The workflow runs `npm run build` and pushes the `site/build/` output to GitHub Pages.
+Deployed via GitHub Actions (`.github/workflows/deploy-docs.yml`) on merge to `main`. The workflow runs `npm run build` and pushes the `apps/docs-site/build/` output to GitHub Pages.
 
 ## Code Standards
 
@@ -36,7 +36,7 @@ Deployed via GitHub Actions (`.github/workflows/deploy-docs.yml`) on merge to `m
 
 ## What Does NOT Belong Here
 
-- `site/node_modules/` - excluded by `.gitignore`
-- `site/.docusaurus/` - build cache, excluded by `.gitignore`
-- `site/build/` - build output, excluded by `.gitignore`
+- `apps/docs-site/node_modules/` - excluded by `.gitignore`
+- `apps/docs-site/.docusaurus/` - build cache, excluded by `.gitignore`
+- `apps/docs-site/build/` - build output, excluded by `.gitignore`
 - Any client-specific content, credentials, or internal operational documents

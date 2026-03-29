@@ -2,7 +2,7 @@
 # Phase 2 - Connect local repo to GitHub Organization remote
 # Run AFTER creating the GitHub org and empty repository
 #
-# Usage: bash scripts/setup-remote.sh
+# Usage: bash tooling/scripts/setup-remote.sh
 # This script is currently configured for:
 #   https://github.com/TKB-Strategies/OpenStrategies.git
 

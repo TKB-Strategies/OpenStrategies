@@ -20,4 +20,4 @@ npm run start
 
 ## What Does NOT Go Here
 
-Client-specific data, engagement details, financials, or confidential information. See [CONTRIBUTING.md](../docs/CONTRIBUTING.md) for the full policy.
+Client-specific data, engagement details, financials, or confidential information. See [CONTRIBUTING.md](../../docs/CONTRIBUTING.md) for the full policy.

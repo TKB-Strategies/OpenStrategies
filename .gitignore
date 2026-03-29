@@ -36,6 +36,11 @@ Thumbs.db
 !.vscode/.gitkeep
 
 # Docusaurus
-site/node_modules/
-site/.docusaurus/
-site/build/
+apps/docs-site/node_modules/
+apps/docs-site/.docusaurus/
+apps/docs-site/build/
+apps/client-portal/node_modules/
+apps/client-portal/.docusaurus/
+apps/client-portal/build/
+apps/healing-plan/node_modules/
+apps/healing-plan/dist/

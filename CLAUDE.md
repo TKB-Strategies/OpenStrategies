@@ -6,8 +6,8 @@ TKB Strategies is a human-centered strategy consulting firm specializing in libe
 
 ## Architecture
 
-- `plugins/` - Custom WordPress plugins deployed to `tkbstrategies.com` via Softaculous Git or GitHub Actions FTP. Production runs WordPress/Divi on Namecheap shared hosting with cPanel, the Jupiter theme, no SSH access, and shared IP `198.54.114.153`.
-- `themes/` - Child theme for Divi/Jupiter customizations.
+- `legacy/wordpress-plugin-quiz-tracker/` - Transitional WordPress plugin surface for the public quiz experience. This is a legacy bridge, not the future platform center.
+- `legacy/wordpress-theme-tkb-child/` - Transitional child theme surface for Divi/Jupiter customizations. This is a legacy bridge, not the future platform center.
 - `frameworks/` - Original consulting frameworks intended for public consumption as Markdown-based documentation.
 - `workshops/` and `presentations/` - Template structures for facilitation and speaking engagements. These directories must never contain client-specific content.
 - `products/` - Digital product source files for Gumroad and course platforms.
@@ -23,7 +23,7 @@ TKB Strategies is a human-centered strategy consulting firm specializing in libe
 ## Code Standards
 
 - Follow WordPress PHP coding standards.
-- Keep plugin code fully decoupled from the Divi theme by using shortcodes or WordPress hooks. Never introduce hard Divi dependencies.
+- Keep legacy plugin code fully decoupled from the Divi theme by using shortcodes or WordPress hooks. Never introduce hard Divi dependencies.
 - All database table names must use `$wpdb->prefix` for multisite compatibility.
 - Register AJAX endpoints with `wp_ajax_` and `wp_ajax_nopriv_` hooks and require nonce verification.
 
@@ -51,12 +51,12 @@ When assisting with development, reference task IDs from the roadmap (for exampl
 
 ## Docusaurus Public Site
 
-The `site/` directory contains a Docusaurus project deployed to GitHub Pages at `https://tkb-strategies.github.io`.
+The `apps/docs-site/` directory contains the Docusaurus project deployed to GitHub Pages at `https://tkb-strategies.github.io`.
 
-- Build: `cd site && npm run build`
-- Local dev: `cd site && npm run start`
+- Build: `cd apps/docs-site && npm run build`
+- Local dev: `cd apps/docs-site && npm run start`
 - Deploy: automated via GitHub Actions on merge to `main` in `.github/workflows/deploy-docs.yml`
-- Content source: Markdown from `frameworks/`, `workshops/`, `presentations/`, and `docs/` is mapped into `site/docs/` for publication
+- Content source: Markdown from `frameworks/`, `workshops/`, `presentations/`, and `docs/` is mapped into `apps/docs-site/docs/` for publication
 - The Docusaurus site is the public-facing layer of the open consulting model and publishes frameworks, tools, and methodology
 - The same client-data boundaries apply: nothing client-specific, no credentials, and no engagement details
 

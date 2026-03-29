@@ -42,6 +42,7 @@ Client-specific data, engagement details, financials, or confidential organizati
 
 - [Documentation Site](https://tkb-strategies.github.io/OpenStrategies/)
 - [Project Roadmap](docs/ROADMAP.md)
+- [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md)
 - [Technology Stack](docs/STACK.md)
 - [Contributing](docs/CONTRIBUTING.md)
 - [Security Policy](docs/SECURITY.md)
@@ -64,7 +65,7 @@ If you've found something that needs fixing or have an idea for improving a fram
 
 #### Writing Documentation or Framework Content
 
-If you've applied one of these frameworks and learned something that wasn't obvious, your experience can strengthen the documentation for everyone. Framework docs are Markdown files in the `site/docs/` directory and publish automatically to the [documentation site](https://tkb-strategies.github.io/OpenStrategies/) on merge to `main`.
+If you've applied one of these frameworks and learned something that wasn't obvious, your experience can strengthen the documentation for everyone. Framework docs are Markdown files in the `apps/docs-site/docs/` directory and publish automatically to the [documentation site](https://tkb-strategies.github.io/OpenStrategies/) on merge to `main`.
 
 #### Fixing a Bug or Building a Feature
 
@@ -76,12 +77,13 @@ Open an issue first so we can discuss scope and approach. When ready, submit a p
 
 #### Technologies
 
-This repository spans consulting methodology (Markdown), web tooling (PHP/WordPress), and documentation infrastructure (JavaScript/React):
+This repository spans consulting methodology (Markdown), web tooling (PHP/WordPress), private delivery applications, and documentation infrastructure (JavaScript/React):
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
 | Frameworks & Content | Markdown | Consulting methodology, workshop templates, presentations |
-| WordPress Plugins | PHP, MySQL, WordPress AJAX API | Assessment tools deployed on [tkbstrategies.com](https://tkbstrategies.com) |
+| Legacy WordPress Surfaces | PHP, MySQL, WordPress AJAX API | Transitional assessment and theme delivery on [tkbstrategies.com](https://tkbstrategies.com) |
+| Client and Product Apps | Docusaurus, Vite, React | Private delivery surfaces and standalone tools being migrated into the monorepo |
 | Documentation Site | Docusaurus, React, CSS | Public-facing site at [tkb-strategies.github.io/OpenStrategies](https://tkb-strategies.github.io/OpenStrategies/) |
 | CI/CD | GitHub Actions | Automated Docusaurus builds and deploys to GitHub Pages |
 | Hosting | Namecheap (cPanel), GitHub Pages | WordPress on shared hosting, docs on GitHub Pages |
@@ -94,8 +96,20 @@ OpenStrategies/
 ├── .github/
 │   ├── profile/                # GitHub Organization profile README
 │   └── workflows/              # GitHub Actions (Docusaurus deploy)
+├── apps/
+│   ├── client-portal/          # Private client knowledge-base app imported for migration
+│   ├── docs-site/              # Docusaurus documentation site
+│   │   ├── blog/               # "Building in Public" journal
+│   │   ├── docs/               # Published documentation (frameworks, tools, workshops)
+│   │   ├── src/                # Landing page, CSS theme, components
+│   │   └── docusaurus.config.js # Site configuration
+│   └── healing-plan/           # Standalone facilitation app imported for migration
+├── legacy/
+│   ├── wordpress-plugin-quiz-tracker/ # Legacy WordPress plugin bridge
+│   └── wordpress-theme-tkb-child/ # Legacy WordPress theme bridge
 ├── docs/
 │   ├── CONTRIBUTING.md         # Contribution guidelines & client-data boundary
+│   ├── MONOREPO-MIGRATION-PLAN.md # SaaS-oriented restructuring plan
 │   ├── OPERATIONS-JOURNAL.md   # Daily operations closeout log
 │   ├── ROADMAP.md              # 9-phase project plan (82 tasks)
 │   ├── SECURITY.md             # Security & credential policy
@@ -104,23 +118,13 @@ OpenStrategies/
 │   ├── compassionate-agility/  # Compassionate Agility framework source
 │   ├── liberation-mapping/     # Liberation Mapping framework source
 │   └── stewards-manual/        # Steward's Manual framework source
-├── plugins/
-│   └── tkb-quiz-tracker-v2/    # WordPress quiz plugin (Patterns & Protection)
 ├── presentations/
 │   └── templates/              # Conference & speaking engagement templates
 ├── products/
 │   ├── courses/                # Udemy course source material
 │   └── gumroad/                # Gumroad digital product source
-├── scripts/
-│   ├── setup-docusaurus.sh     # Phase 3 Docusaurus scaffold script
-│   └── setup-remote.sh         # Phase 2 GitHub remote connection script
-├── site/                       # Docusaurus documentation site
-│   ├── blog/                   # "Building in Public" journal
-│   ├── docs/                   # Published documentation (frameworks, tools, workshops)
-│   ├── src/                    # Landing page, CSS theme, components
-│   └── docusaurus.config.js    # Site configuration
-├── themes/
-│   └── tkb-child/              # WordPress child theme (Divi/Jupiter)
+├── tooling/
+│   └── scripts/                # Repository setup and migration scripts
 ├── workshops/
 │   └── templates/              # Facilitation & training templates
 ├── .gitattributes              # Line ending enforcement
@@ -136,6 +140,8 @@ OpenStrategies/
 ### Building in Public
 
 This project is being built in the open. Progress is tracked across a [9-phase roadmap](docs/ROADMAP.md) with 82 tasks, and every working session is logged in the [operations journal](docs/OPERATIONS-JOURNAL.md).
+
+The repository has begun its first structural migration steps toward a monorepo layout. The public docs app now lives under `apps/docs-site/`, and the external `client-template` and `healing-plan` projects have been imported into `apps/` for the next extraction phase. Future application, package, service, and legacy lanes are documented in the [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md).
 
 Follow along on the [Building in Public journal](https://tkb-strategies.github.io/OpenStrategies/blog) or watch the commit history.
 
