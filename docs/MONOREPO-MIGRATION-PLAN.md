@@ -278,12 +278,16 @@ Goal: begin the real SaaS backend without destabilizing delivery.
 Operational update on 2026-03-29:
 
 - root-level monorepo workflows added for `apps/client-portal/` and `apps/healing-plan/`
-- imported nested workflow files remain in each app directory as historical references
 - `apps/client-portal/` normalized to npm with a committed `package-lock.json` so the root workflow can run deterministically
 - `services/api/` and `services/auth/` now have initial contract documentation
 - `docs/SERVICES-ARCHITECTURE.md` defines the first service-layer boundaries for the SaaS transition
 - `services/api/tenants.md`, `services/api/assessments.md`, and `services/api/exports.md` now define the first concrete API contract surfaces
 - `services/auth/membership.md`, `services/auth/roles.md`, and `services/auth/request-context.md` now define the first concrete auth contract surfaces
+
+Cleanup update on 2026-03-29:
+
+- nested workflow files removed from `apps/client-portal/` and `apps/healing-plan/`
+- root workflows under `.github/workflows/` are now the sole documented deploy paths
 
 ## First File-Move Pass
 

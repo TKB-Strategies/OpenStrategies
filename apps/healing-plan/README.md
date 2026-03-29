@@ -1,4 +1,4 @@
-[![Deploy Healing Plan](https://github.com/TKB-Strategies/healing-plan/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/TKB-Strategies/healing-plan/actions/workflows/deploy.yml)
+[![Deploy Healing Plan](https://github.com/TKB-Strategies/OpenStrategies/actions/workflows/deploy-healing-plan.yml/badge.svg?branch=main)](https://github.com/TKB-Strategies/OpenStrategies/actions/workflows/deploy-healing-plan.yml)
 ![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 ![Vite](https://img.shields.io/badge/vite-6.0-646CFF?logo=vite&logoColor=white)
 ![React](https://img.shields.io/badge/react-18.3-61DAFB?logo=react&logoColor=white)
@@ -46,7 +46,7 @@ See [ONBOARDING.md](ONBOARDING.md) for environment setup and [docs/adr/001-stati
 
 ## Migration Note
 
-This app now lives inside the `tkb-strategies` monorepo at `apps/healing-plan/`. Its original deployment workflow is preserved under `apps/healing-plan/.github/workflows/deploy.yml` as a historical reference. Active monorepo deployment now lives at `.github/workflows/deploy-healing-plan.yml`.
+This app now lives inside the `tkb-strategies` monorepo at `apps/healing-plan/`. Active monorepo deployment lives at `.github/workflows/deploy-healing-plan.yml`.
 
 Its assessment structure and text export assembly are now being extracted into shared packages under `packages/assessment-core/` and `packages/exports/`.
 
@@ -64,8 +64,6 @@ Upload the contents of the `dist/` folder to `/home/mvisdrda/public_html/healing
 
 ```
 healing-plan/
-├── .github/workflows/
-│   └── deploy.yml          # CI/CD pipeline
 ├── public/
 │   └── favicon.svg
 ├── src/
@@ -84,7 +82,7 @@ healing-plan/
 | File | Purpose |
 |------|---------|
 | `vite.config.js` | Sets `base: '/healing-plan/'` for subdirectory hosting |
-| `.github/workflows/deploy.yml` | Build + SSH/rsync deploy to Namecheap |
+| `.github/workflows/deploy-healing-plan.yml` | Root monorepo build + SSH/rsync deploy workflow |
 | `.cpanel.yml` | Passenger restart hook (if cPanel Git deploy is used) |
 
 ## License
