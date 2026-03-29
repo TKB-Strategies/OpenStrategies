@@ -200,6 +200,77 @@ Copy this template for each session:
 - Pending manual commit: `Update .gitignore with Docusaurus exclusions (P3.8)`
 - Pending manual commit: `Daily closeout — Session 2: tracking infrastructure, Docusaurus planning, Phase 2 prep`
 
+## 2026-03-29 — Session 4
+
+| Field | Value |
+|---|---|
+| Phase | Pre-Validation Debt Resolution |
+| Focus | Cross-repo technical debt audit and Tier 1 remediation across all four active repos |
+| Branch | `main` |
+
+### Completed
+
+- Reviewed `Tech-Debt-Assessment-2026-03-29.md` (ADR) and mapped actionable items to each repo
+- **tkb-strategies** — Removed Docusaurus tutorial scaffold from `apps/client-portal/docs/` (TD-11); deleted stray `h origin main` file; confirmed `apps/client-portal/build/` and `apps/healing-plan/dist/` already excluded by `.gitignore` and not tracked (TD-10); committed `docs/CURRENT-STATE.md` and the tech debt ADR (TD-15/SD-05)
+- **tkb-apps-script** — Linked `.clasp.json` to the live Apps Script project (TD-06); moved sync timestamp write to after the forEach loop to prevent silent data loss on failed runs (TD-02); added `getColumnMap()` helper and replaced magic column index fallbacks in `ContentSync.gs` (TD-08); replaced hardcoded column numbers in `Decommission.gs` using `getColumnMap()` (TD-19); documented intentional PAT auth deviation with trade-off rationale in `Config.gs` (SD-01); added plaintext-variables warning to `setFtpVariables()` with TD-13 migration note (TD-01 Option B); staged previously untracked `CpanelGitApi.gs` and `Migration.gs`; updated `PIPELINE-STATUS.md` with Known Debt table
+- **tkb-pipeline** — Removed non-functional `set_repo_secrets` tool and `tweetnacl` dependency (TD-04); confirmed `package-lock.json` already committed (TD-05); ran `npm install` to sync lock file after dependency removal
+- Verified TD-05 and partial TD-04 were already resolved before this session
+
+### Decisions Made
+
+| Decision | Rationale | Impact |
+|---|---|---|
+| TD-01 Option B: defer FTP-to-secrets migration | The real fix is eliminating FTP entirely (TD-13 SSH/rsync migration); encrypting FTP_PASS as a GitHub Secret is interim at best since all client repos are private | Warning comment added to `setFtpVariables()`; no change to provisioning behavior; FTP→SSH is the correct resolution path |
+| Remove `set_repo_secrets` rather than fix it | `tweetnacl` doesn't implement libsodium sealed-box encryption; the correct library is `libsodium-wrappers`; the GAS layer handles FTP credential setting; a silently broken tool is worse than no tool | Tool removed from MCP server; `tweetnacl` removed from `package.json`; `package-lock.json` updated |
+| Document PAT as intentional auth deviation (SD-01) | Apps Script cannot sign JWTs natively, which GitHub App auth requires; classic PAT is the pragmatic single-operator choice | Comment block added to `Config.gs` with trade-offs and rotation guidance; Capabilities Statement contradiction is now resolved at the code level |
+| `clasp pull` not required for TD-06 validation | `clasp` (Google CLI) is not installed; manual file-by-file comparison against the live GAS editor achieves the same verification | Manual sync path documented; TD-06 resolved via `.clasp.json` update and live editor comparison |
+
+### Blockers
+
+| Blocker | Resolution | Status |
+|---|---|---|
+| `clasp` not installed — could not run `clasp pull` to verify live GAS code matches repo | Manual comparison: open changed files in GAS editor, confirm content matches repo | Closed |
+
+### Files Changed
+
+**tkb-strategies**
+- `apps/client-portal/docs/tutorial-basics/` (deleted)
+- `apps/client-portal/docs/tutorial-extras/` (deleted)
+- `docs/CURRENT-STATE.md` (committed)
+- `docs/architecture/adr/Tech-Debt-Assessment-2026-03-29.md` (committed)
+- `docs/OPERATIONS-JOURNAL.md` (this entry)
+- `docs/architecture/adr/Tech-Debt-Assessment-2026-03-29.md` (remediation tables updated)
+
+**tkb-apps-script**
+- `.clasp.json`
+- `src/Config.gs`
+- `src/ContentSync.gs`
+- `src/Decommission.gs`
+- `src/GitHubApi.gs`
+- `PIPELINE-STATUS.md`
+- `src/CpanelGitApi.gs` (staged)
+- `src/Migration.gs` (staged)
+
+**tkb-pipeline**
+- `servers/index.js`
+- `servers/package.json`
+- `servers/package-lock.json`
+
+### Next Session
+
+- Run `buildRegistrySheet()` and `buildPeopleSheet()` in the GAS editor (once each)
+- Run `buildPartnershipPrepForm()` and `buildUpdateForm()` in the GAS editor
+- Run `setupTriggers()` and `wireAllFormTriggers()` to install the 5-minute sync timer and all form submit triggers
+- Deploy the Dashboard as a GAS web app (Deploy → New deployment → Web app)
+- Provision the first live engagement via the intake form
+- TD-03 (provisioning rollback): implement `cleanupProvision()` during or immediately after first engagement
+
+### Commits
+
+- Pending — see commit scripts in this session's work above
+
+---
+
 ## 2026-03-22 — Session 3
 
 | Field | Value |

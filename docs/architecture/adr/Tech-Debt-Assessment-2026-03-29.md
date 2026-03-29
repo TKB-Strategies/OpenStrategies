@@ -362,33 +362,33 @@ The codebase mixes `var` and `const` across files. `DriveHelpers.gs` uses `var r
 
 ### Before First Engagement Validation (This Week)
 
-| ID | Item | Est. Time |
-|----|------|-----------|
-| TD-01 | Move FTP creds from variables to secrets | 1 hour |
-| TD-02 | Fix sync timestamp to write after completion | 30 min |
-| TD-04 | Fix or remove `set_repo_secrets` in MCP server | 30 min |
-| TD-05 | Commit `package-lock.json` for MCP server | 5 min |
-| TD-06 | Link `clasp` to live Apps Script project | 15 min |
+| ID | Item | Est. Time | Status |
+|----|------|-----------|--------|
+| TD-01 | Move FTP creds from variables to secrets | 1 hour | **Deferred (Option B)** — warning added to `setFtpVariables()`; real fix is TD-13 SSH migration |
+| TD-02 | Fix sync timestamp to write after completion | 30 min | **Done** — 2026-03-29 |
+| TD-04 | Fix or remove `set_repo_secrets` in MCP server | 30 min | **Done** — tool removed; `tweetnacl` removed from `package.json` |
+| TD-05 | Commit `package-lock.json` for MCP server | 5 min | **Done** — was already committed before this session |
+| TD-06 | Link `clasp` to live Apps Script project | 15 min | **Done** — 2026-03-29; `.clasp.json` updated with live script ID |
 
 ### During First Engagement (When Issues Surface)
 
-| ID | Item | Est. Time |
-|----|------|-----------|
-| TD-03 | Add provisioning rollback/cleanup on failure | 2 hours |
-| TD-08 | Create shared column-map helper for Sheets access | 1 hour |
-| TD-19 | Replace magic column numbers in Decommission.gs | 30 min |
+| ID | Item | Est. Time | Status |
+|----|------|-----------|--------|
+| TD-03 | Add provisioning rollback/cleanup on failure | 2 hours | Pending |
+| TD-08 | Create shared column-map helper for Sheets access | 1 hour | **Done early** — 2026-03-29; `getColumnMap()` added to `ContentSync.gs` |
+| TD-19 | Replace magic column numbers in Decommission.gs | 30 min | **Done early** — 2026-03-29; `archivePeopleForEngagement()` uses header lookup |
 
 ### After First Engagement Stabilizes
 
-| ID | Item | Est. Time |
-|----|------|-----------|
-| TD-13 | Migrate client-template deploy from FTP to SSH/rsync | 2 hours |
-| TD-09 | Add retry logic to API calls | 1 hour |
-| TD-10 | Remove build artifacts from git | 30 min |
-| TD-11 | Remove Docusaurus tutorial scaffolding | 15 min |
-| TD-14 | Consolidate `getDefaultPhases()` to single source | 1 hour |
-| TD-16 | Remove embedded `tkb-pipeline-dev/` from template | 30 min |
-| TD-15 | Update architecture docs to reflect validated state | 1 hour |
+| ID | Item | Est. Time | Status |
+|----|------|-----------|--------|
+| TD-13 | Migrate client-template deploy from FTP to SSH/rsync | 2 hours | Pending |
+| TD-09 | Add retry logic to API calls | 1 hour | Pending |
+| TD-10 | Remove build artifacts from git | 30 min | **Done** — already excluded by `.gitignore`; confirmed not tracked |
+| TD-11 | Remove Docusaurus tutorial scaffolding | 15 min | **Done** — 2026-03-29; `tutorial-basics/` and `tutorial-extras/` deleted |
+| TD-14 | Consolidate `getDefaultPhases()` to single source | 1 hour | Pending |
+| TD-16 | Remove embedded `tkb-pipeline-dev/` from template | 30 min | Pending |
+| TD-15 | Update architecture docs to reflect validated state | 1 hour | **Partially done** — `CURRENT-STATE.md` committed; full doc pass deferred to post-validation |
 
 ### Deferred (When Scale Demands It)
 
@@ -547,6 +547,20 @@ The v1.1 amendment describes four significant features: coaching profile auto-ge
 This isn't debt in the traditional sense — the v1.1 features are future work, not broken work. But the Capabilities Statement describes them alongside v1.0 features without clearly separating "built" from "designed for a future phase." Someone scanning the document might assume these features are partially implemented rather than entirely unstarted.
 
 **Fix:** Add a section to the Capabilities Statement (or a separate document) that clearly maps which spec version each GAS file implements. Something like: "The current codebase implements Pipeline Spec v1.0 Phases A–F. The v1.1 amendment (coaching profiles, metrics, transformations, visualizations) has no implementation yet."
+
+---
+
+## Addendum B Resolution Log (2026-03-29)
+
+| ID | Item | Status |
+|----|------|--------|
+| SD-01 | PAT vs. GitHub App auth contradiction | **Resolved** — documented as intentional deviation in `Config.gs` with trade-off rationale and rotation guidance |
+| SD-02 | Function names diverged from spec | Pending — low risk, 10-min fix |
+| SD-03 | Roster sheet schema mismatch | Pending — design decision; defer until basic roster flow is validated |
+| SD-04 | Coaching profile generation not implemented | Pending — Markdown profile is correct v1; Google Doc generation is Phase C |
+| SD-05 | Build phase status conflicts across documents | **Partially resolved** — `CURRENT-STATE.md` committed as authoritative inventory; full consolidation pass deferred to post-validation |
+| SD-06 | FTP deploy mechanism contradiction | Pending — same resolution path as TD-13 |
+| SD-07 | v1.1 amendment features have no implementation path | Pending — tracked; not actionable until v1.0 is validated |
 
 ---
 
