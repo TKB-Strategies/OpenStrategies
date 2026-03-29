@@ -147,7 +147,7 @@ OpenStrategies/
 
 This project is being built in the open. Progress is tracked across a [9-phase roadmap](docs/ROADMAP.md) with 82 tasks, and every working session is logged in the [operations journal](docs/OPERATIONS-JOURNAL.md).
 
-The repository has begun its first structural migration steps toward a monorepo layout. The public docs app now lives under `apps/docs-site/`, the private and product apps have been imported into `apps/`, shared logic is being extracted into `packages/`, and the first service-layer contracts now live under `services/`. Future application, package, service, and legacy lanes are documented in the [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md).
+The repository has now completed its first structural migration into a working monorepo layout. The public docs app lives under `apps/docs-site/`, the private and product apps live under `apps/`, shared logic has begun moving into `packages/`, legacy WordPress surfaces are isolated under `legacy/`, and the first service-layer contracts now live under `services/`. All three current app lanes build from their monorepo locations. Future application, package, service, and legacy lanes are documented in the [Monorepo Migration Plan](docs/MONOREPO-MIGRATION-PLAN.md).
 
 Follow along on the [Building in Public journal](https://tkb-strategies.github.io/OpenStrategies/blog) or watch the commit history.
 

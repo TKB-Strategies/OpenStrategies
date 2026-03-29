@@ -2,6 +2,12 @@
 
 This roadmap is the source of truth for phased delivery in the `tkb-strategies` repository. Use task IDs when discussing work, recording closeouts, and deciding what can happen next.
 
+Roadmap status note:
+
+- This roadmap predates the 2026-03-29 monorepo migration and still reflects the original public-repo sequencing.
+- The structural migration tracked in [MONOREPO-MIGRATION-PLAN.md](MONOREPO-MIGRATION-PLAN.md) has completed its core phases: app import, shared-package extraction, legacy isolation, root workflow promotion, and initial service contract definition.
+- Use the migration plan for current repository structure decisions. Use this roadmap for the older public-site and operational task inventory until it is refreshed against the new monorepo model.
+
 Status legend:
 
 - `COMPLETE` - finished and verified

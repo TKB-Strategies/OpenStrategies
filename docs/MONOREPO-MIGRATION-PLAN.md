@@ -220,7 +220,7 @@ Goal: bring private delivery apps into the monorepo while preserving current dep
 
 - Import `client-template` as `apps/client-portal/`.
 - Import `healing-plan` as `apps/healing-plan/`.
-- Preserve app-local workflows initially:
+- Preserve the existing deploy modes while promoting workflow ownership to root-level monorepo workflows:
   - client portal remains FTP deployed
   - healing plan remains SSH/rsync deployed
 
@@ -228,7 +228,8 @@ Status on 2026-03-29:
 
 - external `client-template` imported to `apps/client-portal/` without `node_modules/`
 - external `healing-plan` imported to `apps/healing-plan/` without `.git/` or `node_modules/`
-- app-local workflow files preserved in each imported app as migration references
+- root-level workflows now own deploy automation for both imported apps
+- nested app-local workflow files removed after root workflow promotion
 
 ### Phase E — Extract Reusable Packages
 
@@ -289,6 +290,18 @@ Cleanup update on 2026-03-29:
 - nested workflow files removed from `apps/client-portal/` and `apps/healing-plan/`
 - root workflows under `.github/workflows/` are now the sole documented deploy paths
 
+### Migration Verification and Closeout
+
+Goal: confirm that the migrated monorepo lanes actually work in place before shifting attention to deeper platform work.
+
+Verification update on 2026-03-29:
+
+- `apps/docs-site/` production build succeeds from its monorepo location
+- `apps/client-portal/` production build succeeds from its monorepo location
+- `apps/healing-plan/` production build succeeds from its monorepo location after installing dependencies in the monorepo copy
+- empty top-level `plugins/` and `themes/` roots removed after the legacy move so the repo no longer advertises obsolete top-level lanes
+- the structural migration is complete enough to stop doing container-level moves and start treating the repo as the working monorepo
+
 ## First File-Move Pass
 
 This is the recommended first pass before any deep refactor:
@@ -324,10 +337,11 @@ This first pass is intentionally conservative. It changes container boundaries b
 
 ## Next Actions
 
-Recommended next implementation steps:
+Recommended next implementation steps after migration closeout:
 
-1. Create the top-level skeleton directories without moving existing code.
-2. Move `site/` to `apps/docs-site/` and update the GitHub Pages workflow.
-3. Import `healing-plan` and `client-template` into `apps/`.
-4. Extract `tenant-config`, `assessment-core`, and `exports` as the first shared packages.
-5. Move WordPress assets into `legacy/`.
+1. Convert framework, workshop, presentation, and product source areas into real content packages under `packages/`.
+2. Bring any still-active Google Apps Script and cPanel operational assets into `legacy/` if they remain part of production delivery.
+3. Decide the first true implementation lane for the SaaS transition:
+   - machine-readable service schemas
+   - service scaffolding under `services/api/` and `services/auth/`
+   - shared UI and design-token extraction
