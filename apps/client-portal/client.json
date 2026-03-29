@@ -1,0 +1,32 @@
+{
+  "orgName": "Example Organization",
+  "slug": "example-org",
+  "primaryContact": "Jane Doe",
+  "primaryColor": "#D4920B",
+  "secondaryColor": "#345168",
+  "logoPath": "/img/logo.svg",
+  "tagline": "Powered by TKB Strategies",
+  "engagementType": "cohort-coaching",
+  "engagementScope": "cohort",
+  "clientPathway": "org-contracted-coaching",
+  "phases": [
+    { "id": "01", "label": "Stabilize", "slug": "stabilize" },
+    { "id": "02", "label": "Name", "slug": "name" },
+    { "id": "03", "label": "Structure", "slug": "structure" },
+    { "id": "04", "label": "Practice", "slug": "practice" },
+    { "id": "05", "label": "Sustain", "slug": "sustain" }
+  ],
+  "components": [],
+  "frameworks": [],
+  "tools": [],
+  "contractTerms": {
+    "duration": "6 months",
+    "pricingModel": "hourly-x-sessions",
+    "rate": 125,
+    "totalHours": 54,
+    "totalValue": 6750,
+    "sessions": 36,
+    "participants": 9,
+    "paymentSchedule": "monthly"
+  }
+}

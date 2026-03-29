@@ -44,3 +44,7 @@ apps/client-portal/.docusaurus/
 apps/client-portal/build/
 apps/healing-plan/node_modules/
 apps/healing-plan/dist/
+!apps/client-portal/
+!apps/client-portal/**
+!packages/exports/
+!packages/exports/**
