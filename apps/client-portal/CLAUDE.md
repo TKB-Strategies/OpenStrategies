@@ -13,7 +13,7 @@ It is cloned for each new engagement, then configured by the pipeline with
 
 ## Architecture
 - Docusaurus 3.9.x with TypeScript
-- Node.js 20 and Yarn 1.x
+- Node.js 20 and npm
 - GitHub Actions builds and deploys by FTP to Namecheap
 - Content is phase-driven and engagement-aware
 

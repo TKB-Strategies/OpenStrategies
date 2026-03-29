@@ -34,15 +34,15 @@ This app now lives inside the `tkb-strategies` monorepo at `apps/client-portal/`
 ## Requirements
 
 - Node.js 20 LTS (use `nvm use 20`)
-- Yarn 1.x
+- npm 10.x or newer
 
 ## Local development
 
 ```bash
 cd apps/client-portal
-yarn install
-yarn build
-yarn serve
+npm install
+npm run build
+npm run serve
 ```
 
 ## What This Repository Does
